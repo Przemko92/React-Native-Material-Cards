@@ -1,6 +1,6 @@
 {
-  "name": "react-native-material-cards",
-  "version": "1.0.9",
+  "name": "react-native-material-cards-przemkomod",
+  "version": "1.0.10",
   "description": "A material design card component, customizable and versatile",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SiDevesh/React-Native-Material-Cards.git"
+    "url": "git+https://github.com/Przemko92/React-Native-Material-Cards.git"
   },
   "keywords": [
     "cards",
@@ -23,9 +23,9 @@
   "author": "SiDevesh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SiDevesh/React-Native-Material-Cards/issues"
+    "url": "https://github.com/Przemko92/React-Native-Material-Cards.git/issues"
   },
-  "homepage": "https://github.com/SiDevesh/React-Native-Material-Cards#readme",
+  "homepage": "https://github.com/Przemko92/React-Native-Material-Cards.git#readme",
   "dependencies": {
     "prop-types": "^15.5.10"
   },

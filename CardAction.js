@@ -1,55 +1,75 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  View
-} from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, View } from "react-native";
 
 export default class CardAction extends Component {
-
-  renderChildren() {
+  renderRightChildren() {
     let returnChildren = this.props.children;
-    if(this.props.inColumn===true) {
-      returnChildren = React.Children.map(returnChildren, (child) => {
-        if(child.type.name==="CardButton") {
-          return React.cloneElement(child, {
-            inColumn: true
-          });
-        }
-        else {
-          return child;
-        }
-      })
-    }
+    returnChildren = React.Children.map(returnChildren, x => {
+      if (x.props.right) {
+        return x;
+      }
+    });
+
     return returnChildren;
   }
 
-  render () {
+  renderLeftChildren() {
+    let returnChildren = this.props.children;
+    returnChildren = React.Children.map(returnChildren, x => {
+      if (x.props.left || !x.props.right) {
+        return x;
+      }
+    });
+
+
+    return returnChildren;
+  }
+
+  render() {
     const newStyle = this.props.style || {};
-    let directionStyle = this.props.inColumn===true ? styles.cardActionInColumn : styles.cardActionInRow;
+
     return (
-      <View style={(this.props.separator)&&(!this.props.isDark) ? [directionStyle, styles.separatorAdd, newStyle] : [directionStyle, newStyle]}>
-        {this.renderChildren()}
+      <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', flex: 1, alignSelf: "stretch"}}>
+        <View
+          style={
+            this.props.separator && !this.props.isDark
+              ? [styles.cardActionInRow, styles.separatorAdd, newStyle]
+              : [styles.cardActionInRow, newStyle]
+          }
+        >
+          {this.renderLeftChildren()}
+        </View>
+        <View
+          style={
+            this.props.separator && !this.props.isDark
+              ? [styles.cardActionImageInRow, styles.separatorAdd, newStyle]
+              : [styles.cardActionImageInRow, newStyle]
+          }
+        >
+          {this.renderRightChildren()}
+        </View>
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
   cardActionInRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    alignSelf: 'stretch'
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    alignSelf: "stretch",
+    flex: 1
   },
-  cardActionInColumn: {
-    flexDirection: 'column',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
-    alignSelf: 'stretch'
+  cardActionImageInRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    alignSelf: "stretch",
+    flex: 1
   },
   separatorAdd: {
-    borderTopColor: '#E9E9E9',
+    borderTopColor: "#E9E9E9",
     borderTopWidth: 1
   }
 });

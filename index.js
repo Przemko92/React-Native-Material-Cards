@@ -4,4 +4,6 @@ import CardImage from './CardImage';
 import CardContent from './CardContent';
 import CardAction from './CardAction';
 import CardButton from './CardButton';
-export { Card, CardTitle, CardContent, CardAction, CardButton, CardImage };
+import CardCustomButton from './CardCustomButton';
+
+export { Card, CardTitle, CardContent, CardAction, CardButton, CardImage, CardCustomButton };
